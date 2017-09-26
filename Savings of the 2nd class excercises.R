@@ -28,3 +28,42 @@ df$height <- df$heightIn * 2.54
 df$weight <- df$weightLb * 0.45359237
 df$bmi <- df$weight / (df$height/100)^2
 df
+
+summary(df$bmi)
+summary(df$ageYear)
+
+range(df$bmi) # c(min(df$bmi), max(df$bmi))
+
+hist(df$bmi)
+abline(v = c(18,5, 25), col = "red")
+
+plot(density(df$bmi))
+
+boxplot(df$bmi)
+boxplot(bmi ~ sex, df)
+
+install.packages("beanplot")
+library(beanplot)
+beanplot(df$bmi)
+beanplot(bmi ~ sex, df)
+?beanplot
+
+pie(table(df$sex))
+barplot(table(df$sex))
+dotchart(table(df$sex))
+
+pairs(df)
+
+## intro stats
+
+t.test(bmi ~ sex, df)
+
+
+## ANOVA
+
+aov(height ~ sex, df)
+summary(aov(height ~ sex, data = df))
+
+## intro data.table
+
+
